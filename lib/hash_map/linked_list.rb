@@ -1,4 +1,4 @@
-module HashMap
+class HashMap
   class LinkedList
     def initialize
       @head = nil
@@ -57,4 +57,6 @@ module HashMap
       traverse { |node| return node if yield(node) }
     end
   end
+
+  private_constant :LinkedList
 end
