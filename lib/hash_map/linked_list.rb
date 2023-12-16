@@ -5,18 +5,12 @@ class HashMap
     end
 
     Node = Struct.new(:key, :value, :next_node) do
-      def initialize(key, value, next_node = nil) = super(key, value, next_node)
+      def initialize(key:, value:, next_node: nil) = super(key, value, next_node)
     end
     private_constant :Node
 
-    def append(key, value)
-      new_node = Node.new(key, value)
-      if @head
-        tail = find { |node| node.next_node.nil? }
-        tail.next_node = new_node
-      else
-        @head = new_node
-      end
+    def prepend(key, value)
+      @head = Node.new(key:, value:, next_node: @head)
     end
 
     def find_entry(key)

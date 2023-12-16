@@ -29,7 +29,7 @@ class HashMap
       grow_capacity
       set(key, value)
     else
-      @buckets[key_index].append(key, value)
+      @buckets[key_index].prepend(key, value)
       @length += 1
     end
   end
