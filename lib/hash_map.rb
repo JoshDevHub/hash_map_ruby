@@ -1,3 +1,4 @@
+require_relative "hash_map/hasher"
 require_relative "hash_map/linked_list"
 
 class HashMap
@@ -67,16 +68,8 @@ class HashMap
 
   private
 
-  def hash(string)
-    prime_number = 31
-
-    string.each_char.reduce(0) do |code, char|
-      code * prime_number + char.ord
-    end
-  end
-
   def hash_index(key)
-    index = hash(key) % capacity
+    index = Hasher.hash(key) % capacity
     raise ArgumentError if index.negative? || index >= capacity
 
     index
