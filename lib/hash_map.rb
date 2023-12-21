@@ -42,12 +42,10 @@ class HashMap
 
   def remove(key)
     key_index = hash_index(key)
-    bucket = @buckets[key_index]
+    output_value = @buckets[key_index]&.remove(key)
+    @length -= 1 if output_value
 
-    return if bucket.nil?
-
-    @length -= 1
-    bucket.remove(key)
+    output_value
   end
 
   def clear
