@@ -22,11 +22,11 @@ class HashMap
     end
 
     def traverse
-      current_pointer = @head
+      current = @head
 
-      while current_pointer
-        yield(current_pointer)
-        current_pointer = current_pointer.next_node
+      while current
+        yield(current)
+        current = current.next_node
       end
     end
 
